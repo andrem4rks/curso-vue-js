@@ -6,10 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    
     <div id="app">
-        <p v-once>{{ titulo }}</p>
-        <p>{{ saudacao() }}</p>
-        <a v-bind:href="link">Google</a>
+        <p>{{ contador }}</p>
+        <button v-on:click="somar(5, $event)">Somar +1</button>
+
+        <p v-on:mousemove="attMouseCordinates">Mouse: X={{x}} e Y={{y}}</p>
     </div>
 
 </body>
@@ -19,12 +21,18 @@
         el: '#app',
         data: {
             titulo: 'Primeiro App Vue.js',
-            link: 'http://google.com.br'
+            contador: 0,
+            x: 0,
+            y: 0,
         },
         methods: {
-            saudacao: function() {
-                this.titulo = 'Eu mudei';
-                return this.titulo;
+            somar(valor, e) {
+                console.log(e);
+                this.contador += valor;
+            },
+            attMouseCordinates(e) {
+                this.x = e.screenX;
+                this.y = e.screenY;
             }
         }
     })

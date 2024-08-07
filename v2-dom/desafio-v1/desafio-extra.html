@@ -6,29 +6,43 @@
     <title>Document</title>
 </head>
 <body>
+    
     <div id="app">
-        <p v-once>{{ titulo }}</p>
-        <p>{{ saudacao() }}</p>
-        <a v-bind:href="link">Google</a>
+        <p>{{ contador }}</p>
+        <button v-on:click="randomXY">Recusar</button>
+        <p>{{x}}</p>
+        <p>{{y}}</p>
     </div>
 
 </body>
+
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
     new Vue({
         el: '#app',
         data: {
             titulo: 'Primeiro App Vue.js',
-            link: 'http://google.com.br'
+            contador: 0,
+            x: '0px',
+            y: '0px'
         },
         methods: {
-            saudacao: function() {
-                this.titulo = 'Eu mudei';
-                return this.titulo;
-            }
+           randomXY(e) {
+
+           }
         }
     })
 </script>
+
+
+<style module>
+    button {
+        position: relative;
+        top: v-bind(y);
+        left: v-bind(x);
+    }
+</style>
 </html>
 
 

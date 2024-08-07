@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{ contador }}</p>
+    <button v-on:click="somar">Somar +1</button>
+
+    <p v-on:mousemove="attMouseCordinates">Mouse: X={{x}} e Y={{y}}
+        <!--para a propragação do evento para o child-->
+        <span v-on:mousemove.stop="">AQUI N</span>
+    </p>
+    <p>
+        <a href="http://google.com">Google <= Esse navega</a>
+    </p>
+    <p>
+        <!--msm que o preventDefault-->
+        <a v-on:click.prevent="" href="http://google.com">Google <= esse n navega</a>
+    </p>
+    <p>
+        <!--pode ser feito tbm via funcao-->
+        <a v-on:click="naoNavegar" href="http://google.com">Google <= esse tbm n navega (forma diferente) </a>
+    </p>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Primeiro App Vue.js',
+            contador: 0,
+            x: 0,
+            y: 0,
+        },
+        methods: {
+            somar(e) {
+                console.log(e);
+                this.contador++;
+            },
+            attMouseCordinates(e) {
+                console.log(e);
+                this.x = e.screenX;
+                this.y = e.screenY;
+            },
+            naoNavegar(event) {
+                event.preventDefault();
+            }
+        }
+    })
+</script>
+</html>
+
+
