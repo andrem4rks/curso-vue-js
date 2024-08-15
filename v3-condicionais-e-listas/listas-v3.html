@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+
+<div id="app">
+
+    <ul>
+        <li v-for="(cor, i) in cores" :teste="cor"> {{ i + 1 }}) {{ cor }}</li>
+    </ul>
+    <hr>
+    <template v-for="(cor, i) in cores">
+        <h1>{{cor}}</h1>
+        <p>{{i}}</p>
+    </template>
+
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas: [
+                { nome: 'Ana', idade: 26, peso: 89 },
+                { nome: 'Guilherme', idade: 22, peso: 59 },
+            ]
+        }
+    })
+</script>
+
+<style>
+    ul {
+        list-style: none;
+    }
+
+    h1, p{
+        display: inline;
+    }
+
+</style>
+</body>
+</html>
